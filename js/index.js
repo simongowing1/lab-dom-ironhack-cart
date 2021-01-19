@@ -58,10 +58,10 @@ const target = (event.currentTarget).parentNode;
  let newNode = parentNode.removeChild(target.parentNode)
 //console.log('The target in remove is:', target);
 
-//online syntax:
+//one line syntax:
 //event.target.parentNode.parentNode.remove() 
 
-console.log (newNode)
+//console.log (newNode)
  calculateAll()
   //... your code goes here
 }
@@ -70,9 +70,40 @@ console.log (newNode)
 
 function createProduct(event) {
   //... your code goes here
+  
+  //const newProduct = document.querySelector('.create-product')
+  const newProductName = document.querySelector('.create-product > td > input[type=text]').placeholder;
+  const newProductPrice = document.querySelector('#cart > tfoot > tr.create-product > td:nth-child(2) > input[type=number]').value;
+  let parentNode = document.getElementById('cart')
+  let newProduct = parentNode.insertRow(parentNode.length)
+  let cell1 = newProduct.insertCell(0);
+  let cell2 = newProduct.insertCell(1);
+  let cell3 = newProduct.insertCell(2);
+  let cell4 = newProduct.insertCell(3);
+  let cell5 = newProduct.insertCell(4)
+  cell1.innerHTML = `${newProductName}`;
+  cell2.innerHTML = `$${newProductPrice}.00`;
+  cell3.innerHTML = `<td class="quantity">
+      <input type="number" value="1" min="0" placeholder="Quantity" />
+    </td>`
+  cell4.innerHTML = `<td class="subtotal">$<span>${newProductPrice}.00</span></td>`
+  cell5.innerHTML = `<td class="action">
+      <button class="btn btn-remove">Remove</button>
+    </td>`
+
+  //let oldProduct = document.querySelector('.product')
+  //let newProduct = ``
+  //parentNode.appendChild(oldProduct)
+  
+
   //const target = (event.currentTarget).parentNode.parentNode
-  const newProduct = document.querySelector('.create-product')
-  console.log(newProduct)
+  
+  //document.querySelector('.create-product > td > input').value = ''
+  //const productName = document.querySelector('.create-product > td > input[type=text]').value;
+  //document.getElementById("mytext").value = "My value"
+  
+  console.log(parentNode)
+
 }
 
 window.addEventListener('load', () => {
